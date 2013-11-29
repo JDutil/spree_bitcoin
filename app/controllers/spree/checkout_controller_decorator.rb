@@ -6,14 +6,12 @@ module Spree
     private
 
     def redirect_to_coinbase_if_needed
-      Rails.logger.debug 'Redirect to coinbase'
       return unless params[:state] == "payment"
       return unless params[:order][:payments_attributes]
 
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
-      Rails.logger.debug payment_method.inspect
       return unless payment_method.kind_of?(Spree::PaymentMethod::Coinbase)
-      Rails.logger.debug "REDIRECT COIN"
+
       redirect_to(spree.coinbase_invoice_path(:payment_method_id => payment_method.id)) and return
     end
 
