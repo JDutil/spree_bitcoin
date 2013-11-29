@@ -20,8 +20,8 @@ module SpreeBitcoin
     config.to_prepare &method(:activate).to_proc
 
     initializer "spree.bitcoin.payment_methods", :after => "spree.register.payment_methods" do |app|
-      app.config.spree.payment_methods << Spree::PaymentMethod::Bitpay
-      app.config.spree.payment_methods << Spree::PaymentMethod::Coinbase
+      app.config.spree.payment_methods << Spree::Gateway::Bitpay
+      app.config.spree.payment_methods << Spree::Gateway::Coinbase
     end
   end
 end
