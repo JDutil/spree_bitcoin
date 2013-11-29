@@ -1,8 +1,8 @@
 <div id="bitcoin-container">
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <div id="pay-with-btc">
-    <a href="<%= spree.coinbase_invoice_url(payment_method_id: payment_method.id) %>" id='coinbase_button' method="post">
+    <a href="<%= spree.coinbase_invoice_path(payment_method_id: payment_method.id) %>" id='coinbase_button' method="post">
       <div id="shine"></div>
       <div id="logo">
         <div id="coin">
