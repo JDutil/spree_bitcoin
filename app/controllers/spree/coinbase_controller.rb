@@ -61,7 +61,7 @@ module Spree
         :amount => order.total,
         :payment_method => payment_method
       })
-        # payment -> complete, hopefully
+
         order.next
         render :json => {status: 'ok'}.to_json
       else
