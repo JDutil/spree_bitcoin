@@ -31,7 +31,7 @@ module Spree
               :name => "#{Spree::Config[:site_name]} Order #{current_order.number}",
               :type => 'buy_now',
               :price => current_order.total.to_s,
-              :price_currency_ico => current_currency,
+              :price_currency_iso => current_currency,
               :price_string => current_order.total.to_s,
               :success_url => spree.order_url(current_order)
             }
