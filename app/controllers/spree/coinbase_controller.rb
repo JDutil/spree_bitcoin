@@ -40,13 +40,39 @@ module Spree
     end
 
     def notify
-      Rails.logger.debug params.inspect
+      # build CoinbasePayment
+      coinbase_payment_params = {
+        "order_number"              => params["order"]["custom"],
+        "coinbase_submitted_at"     => params["order"]["created_at"],
+        "satoshi"                   => params["order"]["total_btc"]["cents"],
+        "coinbase_id"               => params["order"]["id"],
+        "coinbase_button_id"        => params["order"]["button"]["id"],
+        "receive_address"           => params["order"]["receive_address"],
+        "transaction_id"            => params["order"]["transaction"]["id"],
+        "transaction_hash"          => params["order"]["transaction"]["hash"],
+        "transaction_confirmations" => params["order"]["transaction"]["confirmations"],
+        "customer_email"            => params["customer"]["email"]
+      }
+
+      order = Spree::Order.find_by_number(coinbase_payment_params["order_number"])
+
+      if order.payments.create!({
+        :source => Spree::CoinbasePayment.create(coinbase_payment_params),
+        :amount => order.total,
+        :payment_method => payment_method
+      })
+        # payment -> complete, hopefully
+        order.next
+        render :json => {status: 'ok'}.to_json
+      else
+        render status: 500
+      end
     end
 
     private
 
     def payment_method
-      @payment_method ||= Spree::PaymentMethod.find(params[:payment_method_id])
+      @payment_method ||= Spree::PaymentMethod.find_by_type("Spree::PaymentMethod::Coinbase")
     end
 
   end
