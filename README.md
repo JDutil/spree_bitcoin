@@ -3,7 +3,7 @@ SpreeBitcoin
 
 Spree Extension enabling Coinbase as a payment method.  Plans to add BitPay as well (pull requests welcome).
 
-WARNING: This is still a work in progress & should be tested before Production use.
+**WARNING: This is still a work in progress & should be tested before Production use.**
 
 Installation
 ------------
