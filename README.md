@@ -11,7 +11,7 @@ Installation
 Add spree_bitcoin to your Gemfile:
 
 ```ruby
-gem 'spree_bitcoin'
+gem 'spree_bitcoin', github: 'jdutil/spree_bitcoin'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -64,4 +64,4 @@ Donating
 
 Bitcoin donations may be sent to: 1NEjbUJxad2eMcStJCBSuLkrkTSkC4Q5PP
 
-Copyright (c) 2013 Jeff Dutil, released under the [New BSD License](https://github.com/jdutil/spree_drop_ship/tree/master/LICENSE).
+Copyright (c) 2013 Jeff Dutil, released under the [New BSD License](https://github.com/jdutil/spree_bitcoin/tree/master/LICENSE).
